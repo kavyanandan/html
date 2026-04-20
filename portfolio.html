@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kavya Nandan Singh — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink:       #E8397D;
+    --pink-light: #F7C5D9;
+    --pink-pale:  #FDE8F1;
+    --sage:       #B8CEC2;
+    --sage-light: #DDE9E3;
+    --cream:      #FAF6F0;
+    --ink:        #1A1A2E;
+    --muted:      #6B6B7B;
+    --white:      #FFFFFF;
+    --star-gold:  #E8B86D;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: var(--white);
+    border-bottom: 1.5px solid var(--pink-light);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--pink);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--pink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 3rem 4rem 5rem;
+    position: relative; z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--white);
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--pink-light);
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1.8rem; font-weight: 500;
+  }
+
+  .hero-desc {
+    font-size: 1rem; line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+    max-width: 420px; margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--pink); color: var(--white);
+    padding: 0.75rem 2rem; border-radius: 999px;
+    font-size: 0.88rem; font-weight: 500; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,57,125,0.35); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3); color: var(--white);
+    padding: 0.75rem 2rem; border-radius: 999px;
+    font-size: 0.88rem; font-weight: 500; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--pink-light); background: rgba(247,197,217,0.08); }
+
+  .hero-right {
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* decorative right panel */
+  .hero-right-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #2C1654 0%, #1A1A2E 100%);
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .hero-card {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    width: 300px;
+    text-align: center;
+  }
+  .hero-avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--white);
+    margin: 0 auto 1.2rem;
+    /* Replace background with your photo — see instructions below */
+  }
+  .hero-card-name {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .hero-card-uni {
+    font-size: 0.78rem; color: var(--sage); line-height: 1.5; margin-bottom: 1.2rem;
+  }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+  .pill {
+    font-size: 0.72rem; padding: 0.25rem 0.75rem;
+    border-radius: 999px; font-weight: 500;
+  }
+  .pill-pink { background: rgba(232,57,125,0.2); color: var(--pink-light); }
+  .pill-sage { background: rgba(184,206,194,0.2); color: var(--sage); }
+
+  /* decorative stars */
+  .star { position: absolute; color: var(--star-gold); font-size: 1.5rem; animation: spin 6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* floating shapes */
+  .shape {
+    position: absolute; border-radius: 50%;
+    background: rgba(232,57,125,0.08);
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 5rem 5rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--pink); font-weight: 700; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-desc { font-size: 1rem; line-height: 1.75; color: var(--muted); max-width: 580px; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .about-image-box {
+    background: var(--pink-pale);
+    border-radius: 24px; aspect-ratio: 4/5;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 1.1rem; color: var(--pink); border: 2px dashed var(--pink-light);
+    position: relative; overflow: hidden;
+  }
+  .about-image-box span { font-size: 0.85rem; color: var(--muted); text-align: center; padding: 1rem; }
+  .about-right {}
+  .about-stat-row { display: flex; gap: 2rem; margin-top: 2rem; }
+  .about-stat { text-align: center; }
+  .about-stat-num {
+    font-family: 'Space Mono', monospace; font-size: 2rem;
+    color: var(--pink); font-weight: 700;
+  }
+  .about-stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── INTERESTS / SKILLS ── */
+  .interests { background: var(--cream); }
+  .interests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .interest-card {
+    background: var(--white); border-radius: 20px;
+    padding: 2rem 1.5rem; border: 1.5px solid var(--pink-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .interest-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(232,57,125,0.12); }
+  .interest-card::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--pink-pale);
+  }
+  .interest-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .interest-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .interest-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── SKILLS BAR ── */
+  .skills { background: var(--ink); padding: 5rem; }
+  .skills .section-title { color: var(--white); }
+  .skills .section-label { color: var(--pink-light); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+  .skill-item { margin-bottom: 1.2rem; }
+  .skill-top { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+  .skill-name { font-size: 0.9rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+  .skill-pct { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--pink-light); }
+  .skill-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--pink); border-radius: 999px; animation: grow 1.2s ease forwards; transform-origin: left; }
+  @keyframes grow { from { width: 0 } }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 2rem; margin-top: 3rem; }
+  .project-card {
+    border-radius: 20px; overflow: hidden;
+    border: 1.5px solid var(--pink-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(232,57,125,0.12); }
+  .project-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .thumb-pink { background: var(--pink-pale); }
+  .thumb-sage { background: var(--sage-light); }
+  .thumb-ink  { background: #E8E8F0; }
+  .project-body { padding: 1.5rem; }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .project-tag {
+    font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+    background: var(--pink-pale); color: var(--pink); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .project-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .project-link {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.82rem; font-weight: 600; color: var(--pink);
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .project-link::after { content: ' →'; }
+
+  /* ── REACH OUT / CTA ── */
+  .cta {
+    background: var(--pink);
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .cta .section-label { color: rgba(255,255,255,0.7); }
+  .cta .section-title { color: var(--white); margin: 0 auto 1rem; }
+  .cta-desc { font-size: 1rem; color: rgba(255,255,255,0.8); margin: 0 auto 2.5rem; max-width: 480px; line-height: 1.75; }
+  .btn-white {
+    background: var(--white); color: var(--pink);
+    padding: 0.85rem 2.2rem; border-radius: 999px;
+    font-size: 0.9rem; font-weight: 700; text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-2px); }
+  .cta-shape {
+    position: absolute; border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    text-align: center; padding: 2rem;
+    font-size: 0.8rem; letter-spacing: 0.04em;
+  }
+  footer span { color: var(--pink); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 900px){
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .interests-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skills { padding: 3.5rem 1.5rem; }
+  }
+  @media(max-width: 540px){
+    .interests-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <div class="nav-logo">Kavya Nandan Singh<em style="font-style:italic">.</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="home">
+
+  <!-- decorative shapes -->
+  <div class="shape" style="width:300px;height:300px;top:-80px;left:-80px;animation-delay:0s"></div>
+  <div class="shape" style="width:150px;height:150px;bottom:10%;left:30%;animation-delay:2s"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">✦ B.Tech CSE (AI) · IGDTUW · Delhi</div>
+    <h1 class="hero-name">
+      Hi, I'm<br/>
+      <em>Kavya Nandan Singh</em>
+    </h1>
+    <p class="hero-subtitle">Developer · Designer · Creator</p>
+    <p class="hero-desc">
+      First-year student passionate about Java, Web Development, AI/ML, and Graphic Design.
+      I build things that are thoughtful, functional, and beautiful.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Let's Connect</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <!-- decorative star -->
+    <div class="star" style="top:15%;right:20%">✦</div>
+    <div class="star" style="bottom:20%;left:18%;animation-direction:reverse;font-size:1rem">✦</div>
+
+    <div class="hero-card">
+      <!-- PHOTO: Replace the div below with <img src="your-photo.jpg" style="width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto 1.2rem;display:block;"> -->
+      <img src="kavyaa.jpeg" style="width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto 1.2rem;display:block;"> -->
+      <!-- Change "YN" to your initials above -->
+      <p class="hero-card-name">Kavya Nandan Singh</p>
+      <p class="hero-card-uni">Indira Gandhi Delhi Technical<br>University for Women<br>1st Year · CSE AI</p>
+      <div class="hero-pills">
+        <span class="pill pill-pink">Java</span>
+        <span class="pill pill-pink">Web Dev</span>
+        <span class="pill pill-sage">AI / ML</span>
+        <span class="pill pill-sage">DSA</span>
+        <span class="pill pill-pink">Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about" id="about">
+  <p class="section-label">✦ Who I Am</p>
+  <h2 class="section-title">A curious mind at the intersection<br>of code &amp; creativity.</h2>
+  <div class="about-grid">
+    <img src="kavya.jpeg" alt="Your Name" style="width:100%;height:100%;object-fit:cover;border-radius:22px;">
+    <div class="about-right">
+      <p class="section-desc">
+        I'm a first-year B.Tech student in Computer Science (AI) at IGDTUW, Delhi.
+        I chose Java as my go-to language for DSA because of its clarity and power.
+        I'm deeply curious about how technology and design can work together —
+        whether that's crafting a pixel-perfect UI or training a machine learning model.
+      </p>
+      <p class="section-desc" style="margin-top:1rem;">
+        Outside of academics, you'll find me on the badminton court, sketching
+        design concepts, or exploring the latest in AI research.
+      </p>
+      <div class="about-stat-row">
+        <div class="about-stat">
+          <div class="about-stat-num">1st</div>
+          <div class="about-stat-label">Year</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">3+</div>
+          <div class="about-stat-label">Projects</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">∞</div>
+          <div class="about-stat-label">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ INTERESTS ══════════════ -->
+<section class="interests" id="interests">
+  <p class="section-label">✦ What I Love</p>
+  <h2 class="section-title">My Interests</h2>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="interest-icon">☕</div>
+      <div class="interest-title">Java & DSA</div>
+      <div class="interest-text">My chosen language for problem-solving. I enjoy tackling data structures and algorithms challenges that sharpen logical thinking.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🌐</div>
+      <div class="interest-title">Web Development</div>
+      <div class="interest-text">Building beautiful, responsive websites from scratch. Currently studying HTML, CSS, JavaScript, and beyond.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🤖</div>
+      <div class="interest-title">AI & Machine Learning</div>
+      <div class="interest-text">Fascinated by how machines can learn. Exploring concepts and eager to build my first ML models as I advance.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🎨</div>
+      <div class="interest-title">Graphic Design</div>
+      <div class="interest-text">I love creating visual experiences — typography, color theory, layouts. Design thinking makes my code more human-centered.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🏸</div>
+      <div class="interest-title">Badminton</div>
+      <div class="interest-text">Sport keeps me sharp and energized. The strategy in badminton parallels the logic I apply in programming.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🔭</div>
+      <div class="interest-title">Continuous Learning</div>
+      <div class="interest-text">I'm naturally curious — always reading, experimenting, and connecting dots across fields of technology and art.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<section class="skills" id="skills">
+  <p class="section-label">✦ What I Know</p>
+  <h2 class="section-title">Skills & Tools</h2>
+  <div class="skills-grid">
+    <div>
+      <h3 style="color:var(--pink-light);font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.5rem;">Programming & Dev</h3>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Java</span><span class="skill-pct">75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">HTML & CSS</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-pct">60%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Data Structures & Algorithms</span><span class="skill-pct">65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--sage);font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.5rem;">Design & Other</h3>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Graphic Design (Canva / Figma)</span><span class="skill-pct">70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%;background:var(--sage)"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">AI/ML Concepts</span><span class="skill-pct">40%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:40%;background:var(--sage)"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Problem Solving</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%;background:var(--sage)"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Git & Version Control</span><span class="skill-pct">55%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:55%;background:var(--sage)"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROJECTS ══════════════ -->
+<section class="projects" id="projects">
+  <p class="section-label">✦ What I've Built</p>
+  <h2 class="section-title">Projects</h2>
+  <p class="section-desc">A collection of things I've made, from academic work to personal explorations.</p>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 — replace with your real project -->
+    <div class="project-card">
+      <div class="project-thumb thumb-pink">🌸</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">DSA</span>
+        </div>
+        <div class="project-title">DSA PROJECT</div>
+        <div class="project-desc">
+          Short description of what this project does, the problem it solves, and what you learned building it.
+        </div>
+        <a href="#" class="project-link">View Project</a>
+        <!-- Change href to your GitHub link -->
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-thumb thumb-sage">🌿</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JS</span>
+        </div>
+        <div class="project-title">MY PORTFOLIO</div>
+        <div class="project-desc">
+          Describe your web development project here. Mention any interesting techniques or design decisions you made.
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-thumb thumb-ink">✨</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Design</span>
+          <span class="project-tag">Figma</span>
+        </div>
+        <div class="project-title">MY FIGMA DESIGN</div>
+        <div class="project-desc">
+          A graphic design or UI/UX project. Describe what you designed, your process, and the tools you used.
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ CTA / CONTACT ══════════════ -->
+<section class="cta" id="contact">
+  <div class="cta-shape" style="width:250px;height:250px;top:-80px;left:-60px"></div>
+  <div class="cta-shape" style="width:180px;height:180px;bottom:-40px;right:10%"></div>
+  <p class="section-label">✦ Let's Talk</p>
+  <h2 class="section-title" style="color:var(--white);max-width:560px;margin:0 auto 1rem;">
+    Open to opportunities,<br>collaborations &amp; conversations.
+  </h2>
+  <p class="cta-desc">
+    Whether it's a project, internship, or just geeking out about code and design —
+    I'd love to hear from you!
+  </p>
+  <!-- Replace the href below with mailto:youremail@example.com -->
+  <a href="kavyanandansingh@gmail.com" class="btn-white">Say Hello →</a>
+
+  <!-- Social Links — fill in your actual URLs -->
+  <div style="margin-top:2.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="https://github.com/kavyanandan" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:none;font-weight:500;">GitHub</a>
+    <a href="https://www.linkedin.com/in/kavya-nandan-singh/" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:none;font-weight:500;">LinkedIn</a>
+    <a href="https://instagram.com/yourusername" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:none;font-weight:500;">Instagram</a>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  Made with <span>♥</span> by <span>Kavya Nandan </span> · IGDTUW · Delhi
+</footer>
+
+</body>
+</html>
